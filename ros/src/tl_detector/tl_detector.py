@@ -69,8 +69,8 @@ class TLDetector(object):
             msg (Image): image from car-mounted camera
 
         """
-        self.has_image = True
-        self.camera_image = msg
+        #self.has_image = True
+        #self.camera_image = msg
         light_wp, state = self.process_traffic_lights()
 
         '''
@@ -137,7 +137,7 @@ class TLDetector(object):
             int: ID of traffic light color (specified in styx_msgs/TrafficLight)
 
         """
-        light = None
+        # light = None
         closest_light = None
         line_wp_idx = None
 
@@ -159,7 +159,8 @@ class TLDetector(object):
                     closest_light = light
                     line_wp_idx = temp_wp_idx
         if closest_light:
-            state = self.get_light_state(closest_light)
+            #state = self.get_light_state(closest_light)
+	    state = self.get_light_state(light)
             return line_wp_idx, state
         self.waypoints = None
         return -1, TrafficLight.UNKNOWN
